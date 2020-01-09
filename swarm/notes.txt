@@ -8,3 +8,6 @@ docxletters                 172.16.19.151:5000/docxletters:1.0.0
 accplan                     172.16.19.151:5000/accplan:1.0.0
 serviceproviders            172.16.19.151:5000/serviceproviders:1.0.0
 
+
+
+$ docker stack deploy -c ecollect-compose.yaml ecollect-stack

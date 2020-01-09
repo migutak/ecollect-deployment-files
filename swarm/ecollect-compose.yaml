@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  ecollect:
+    image: migutak/ecollect:1.0.0
+    deploy:
+      replicas: 1
+    container_name: ecollect
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+    - ecol-network
+
+networks:
+  ecol-network:
+    driver: overlay
