@@ -1,0 +1,10 @@
+Service                     Image
+--------------------------------------------
+ecollect                    172.16.19.151:5000/ecollect:1.0.0
+apis                        172.16.19.151:5000/ecollectapis:1.0.0
+oraclenode                  172.16.19.151:5000/oraclenode:1.0.0
+uploads                     172.16.19.151:5000/uploads:1.0.0
+docxletters                 172.16.19.151:5000/docxletters:1.0.0
+accplan                     172.16.19.151:5000/accplan:1.0.0
+serviceproviders            172.16.19.151:5000/serviceproviders:1.0.0
+
