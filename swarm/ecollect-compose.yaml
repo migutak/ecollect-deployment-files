@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3"
 services:
   ecollect:
     image: migutak/ecollect:1.0.0
