@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecolconfigmap
+  namespace: default
+data:
+  IMAGEPATH: /app/docxletters/routes/
+  FILEPATH: /app/nfs/demandletters
+  PORT: ecol
+  DATABASE: ecol
+  HOST: 127.0.0.1
+  CONNECTIONSTRING: 192.168.0.30:1521/ORCLCDB.localdomain
