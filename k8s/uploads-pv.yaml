@@ -10,7 +10,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
-  reclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/app/nfs/uploads"
 

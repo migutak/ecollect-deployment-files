@@ -1,0 +1,92 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uploads
+  labels:
+    app: uploads
+spec:
+  type: NodePort
+  ports:
+    - port: 4000
+      nodePort: 30040
+      name: containerport1
+      # file download test link /filesapi
+    - port: 3000
+      nodePort: 30030
+      name: containerport2
+      # activity_file_uploads uploads and downloads /filesapi
+    - port: 5001
+      nodePort: 30051
+      name: containerport3
+      # xls upload /xlsupload
+    - port: 5000
+      nodePort: 30050
+      name: containerport4
+      # demands_uploads test with /api
+  selector:
+    app: uploads
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uploads
+spec:
+  selector:
+    matchLabels:
+      app: uploads
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: uploads
+    spec:
+      volumes:
+        - name: uploads-pv-storage
+          persistentVolumeClaim:
+            claimName: upload-pvc
+        - name: uploads-vol
+          hostPath:
+            # directory location on host
+            path: /app/nfs/uploads
+        - name: demands-vol
+          hostPath:
+            # directory location on host
+            path: /app/nfs/demandletters
+      containers:
+      - name: uploads-container
+        #image: 172.16.204.74:5000/uploads:1.0.0
+        image: migutak/uploads:1.0.0
+        ports:
+          - containerPort: 4000
+            name: containerport1
+          - containerPort: 3000
+            name: containerport2
+          - containerPort: 5001
+            name: containerport3
+          - containerPort: 5000
+            name: containerport4
+        imagePullPolicy: Always
+        env:
+        - name: FILEPATH
+          valueFrom:
+            configMapKeyRef:
+              name: ecolconfigmap
+              key: UPLOADSFILEPATH
+        - name: CORS
+          valueFrom:
+            configMapKeyRef:
+              name: ecolconfigmap
+              key: CORS
+        volumeMounts:
+        - mountPath: /app/nfs/uploads
+          name: uploads-vol
+        - mountPath: /app/nfs/demandletters
+          name: demands-vol
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "4Gi"
+            cpu: "500m"

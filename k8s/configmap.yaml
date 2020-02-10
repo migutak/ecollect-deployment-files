@@ -6,7 +6,9 @@ metadata:
 data:
   IMAGEPATH: /app/docxletters/routes/
   FILEPATH: /app/nfs/demandletters
-  PORT: ecol
-  DATABASE: ecol
-  HOST: 127.0.0.1
-  CONNECTIONSTRING: 192.168.0.30:1521/ORCLCDB.localdomain
+  UPLOADSFILEPATH: /app/nfs/uploads
+  CORS: http://172.16.204.74
+  PORT: '1521'
+  DATABASE: ORCLCDB.localdomain
+  HOST: 68.183.63.158
+  CONNECTIONSTRING: 68.183.63.158:1521/ORCLCDB.localdomain

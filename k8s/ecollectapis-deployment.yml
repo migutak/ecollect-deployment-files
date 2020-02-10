@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ecollectapis-service
+  name: ecollectapis-svc
 spec:
   selector:
     app: ecollectapis
@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: ecollectapis
-        image: 172.16.204.72:5000/ecollectapis:1.0.0
+        image: 172.16.204.72:5000/ecollect_apis:1.0.0
         ports:
         - containerPort: 8000
         imagePullPolicy: IfNotPresent
@@ -70,7 +70,7 @@ spec:
               key: dbpassword
         resources:
           requests:
-            memory: "2Gi"
+            memory: "500Mi"
             cpu: "500m"
           limits:
             memory: "4Gi"

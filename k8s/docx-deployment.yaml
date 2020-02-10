@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docx
+  labels:
+    app: docx
+spec:
+  type: NodePort
+  ports:
+    - port: 8004
+      nodePort: 30084
+      name: http
+  selector:
+    app: docx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docx
+spec:
+  selector:
+    matchLabels:
+      app: docx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: docx
+    spec:
+      volumes:
+        - name: demands-pv-storage
+          persistentVolumeClaim:
+            claimName: demands-pvc
+      containers:
+      - name: demands-container
+        volumeMounts:
+          - name: demands-pv-storage
+            mountPath: /app/nfs/demandletters
+        image: migutak/docxletters:1.0.0
+        ports:
+          - containerPort: 8004
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "250m"
+          limits:
+            memory: "8Gi"
+            cpu: "500m"
