@@ -10,7 +10,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
-    persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/app/nfs/demandletters"
 

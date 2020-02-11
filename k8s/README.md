@@ -10,13 +10,13 @@
 8. oracledbnode-deployment and service
 9. uploads-deployment and service
 10. accplan-deployment and service
-? sms
-? serviceproviders
+11. sms
+12. serviceproviders **** confirm image
 ? extletters
 ? birt
 ? nginx.conf
 ? kibana
 ? grafana
 ? prometheus
-? 
+19. rabbitmq
 ? 

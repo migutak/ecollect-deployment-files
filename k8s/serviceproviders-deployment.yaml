@@ -1,38 +1,38 @@
----
+  ---
     apiVersion: v1
     kind: Service
     metadata:
-      name: accplan
+      name: serviceproviders
     spec:
       selector:
-        app: accplan
+        app: serviceproviders
       type: NodePort
       ports:
       - protocol: TCP
         port: 80
         targetPort: 80
-        nodePort: 30040
+        nodePort: 30060
     
     ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: accplan-deployment
+      name: serviceproviders-deployment
       labels:
-        app: accplan
+        app: serviceproviders
     spec:
       replicas: 2
       selector:
         matchLabels:
-          app: accplan
+          app: serviceproviders
       template:
         metadata:
           labels:
-            app: accplan
+            app: serviceproviders
         spec:
           containers:
-          - name: accplan
-            image: 172.16.204.74:5000/accplan:1.0.0
+          - name: serviceproviders
+            image: 172.16.204.74:5000/serviceproviders:1.0.0
             ports:
             - containerPort: 80
     
