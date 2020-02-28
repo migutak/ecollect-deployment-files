@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: ecollectapis
-        image: 172.16.204.72:5000/ecollect_apis:1.0.0
+        image: 172.16.204.72:5000/ecollect_apis:2.0.0
         ports:
         - containerPort: 8000
         imagePullPolicy: IfNotPresent

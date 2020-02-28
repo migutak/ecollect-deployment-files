@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+   mysql:
+     image: mysql:5.6
+     restart: always
+     container_name: mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: root
+     volumes:
+       - "c:\\mysqldata\\:/var/lib/mysql"
+     ports:
+       - "3308:3306"
+     networks:
+     - pm-net
+
+   processmaker:
+     depends_on:
+     - mysql
+     image: digitaloak/processmaker-ce:latest
+     container_name: pmaker
+     ports:
+       - "8085:80"
+     restart: always
+     environment:
+       URL: "127.0.0.1:8085"
+     networks:
+      - pm-net
+
+
+networks:
+  pm-net:
+    driver: bridge
+
+# docker run -it -d --name pmaker -e URL:172.16.19.151:8085 -p 8085:80 digitaloak/processmaker-ce:latest
+# docker run -it -d --name mysql -e MYSQL_ROOT_PASSWORD:root -v /app/mysqldata:/var/lib/mysql -p 3306:3306 mysql:5.6
