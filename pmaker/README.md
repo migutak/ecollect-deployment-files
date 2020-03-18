@@ -28,13 +28,13 @@ Next Steps
 Kubernetes ALL nodes grafana
 
 http://127.0.0.1:8089/sysworkflow/en/neoclassic/oauth2/applications
-
+http://172.16.19.151:8089/sysworkflow/en/neoclassic/oauth2/applications
 our application "caselister" was registered successfully!
 
 Application Credentials
 
-  * Client ID: PPMBHKKHMDRYMJRLXJPCNGYREZLGONEH
-  * Client Secret: 2467532265e49abb66b1707010030223
+    * Client ID: YPQEXHKSFJZSZDVQVCTAJUDVFMBZDYHC
+  * Client Secret: 5393352015e60c53af17a02027464074
 
   * Client ID: CEKOGNMZXSJTBXIPCRDVOUFISCTMGAKD
   * Client Secret: 1282642125e4ad5086c9995012845496
@@ -48,6 +48,17 @@ Next Steps
 ecollecttst
  * Client ID: YABZMYNJTYWRIFRZOQFZLNINHRQNLNFJ
 * Client Secret: 5457597435e577227e1e175003579392
+
+Home
+Registration Success
+
+
+Your application "ecollect" was registered successfully!
+
+Application Credentials
+
+  * Client ID: GMZXWMGXVPXDHSIKADKQVBJNSJMRYNMI
+  * Client Secret: 3403119695e68332f07d878068047494
 
 POST http://127.0.0.1:8085/workflow/oauth2/token
 
@@ -226,5 +237,45 @@ vi loginStyle.css
 
 @#
 
-public (eth1) 
+public (eth1) ==>Ngina Car track
 52.117.54.217 root/RwUNvns4
+
+docker run -it -d --name ecollect -v /app/configs/nginx.conf:/etc/nginx/nginx.conf:ro -v /app/nginxlogs:/var/log/nginx:rw -v /app/ecollect:/usr/share/nginx/html:ro -p 80:80
+ThisB!gHous#$123
+
+
+module.exports = {
+    oracle: {
+        connector: 'oracle',
+        hostname: process.env.DB_HOST || '172.16.20.2',
+        port: process.env.DB_PORT || 1523,
+        user: process.env.DB_USER || 'ecol',
+        password: process.env.DB_PASSWORD || 'DsQSnttm_1',
+        database: process.env.DB_DATABASE || 'ECOLTST',
+    }
+}
+
+
+"oracle": {
+    "host": "172.16.210.14",
+    "port": 1564,
+    "database": "ecollect",
+    "password": "L#TTc011",
+    "name": "oracle",
+    "tns": "",
+    "user": "ecol",
+    "connector": "oracle"
+  }
+
+
+processmakeroracle | [04-Mar-2020 07:52:44] ERROR: [pool www] failed to read the ACL of the socket '/var/run/php-fpm/www.sock': Operation not supported (95)
+processmakeroracle | [04-Mar-2020 07:52:44] ERROR: FPM initialization failed
+processmakeroracle | [FAILED]
+
+Starting php-fpm-7.1: [04-Mar-2020 08:34:10] ERROR: [pool www] failed to read the ACL of the socket '/var/run/php-fpm/www.sock': Operation not supported (95)
+pmaker          | [04-Mar-2020 08:34:10] ERROR: FPM initialization failed
+pmaker          | [FAILED]
+
+
+
+

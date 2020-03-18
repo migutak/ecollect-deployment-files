@@ -5,8 +5,8 @@ metadata:
   namespace: default
 data:
   IMAGEPATH: /app/docxletters/routes/
-  FILEPATH: /app/nfs/demandletters
-  UPLOADSFILEPATH: /app/nfs/uploads
+  FILEPATH: /app/nfs/demandletters/
+  UPLOADSFILEPATH: /app/nfs/uploads/
   CORS: http://172.16.204.74
   PORT: '1521'
   DATABASE: ORCLCDB.localdomain

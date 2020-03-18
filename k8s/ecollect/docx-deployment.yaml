@@ -37,7 +37,18 @@ spec:
         volumeMounts:
           - name: demands-pv-storage
             mountPath: /app/nfs/demandletters
-        image: migutak/docxletters:1.0.0
+        image: 52.117.54.217:5000/docxletters:1.0.0
+        env:
+        - name: FILEPATH
+          valueFrom:
+            configMapKeyRef:
+              name: ecolconfigmap
+              key: FILEPATH
+        - name: IMAGEPATH
+          valueFrom:
+            configMapKeyRef:
+              name: ecolconfigmap
+              key: IMAGEPATH
         ports:
           - containerPort: 8004
         resources:

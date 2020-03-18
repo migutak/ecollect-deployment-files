@@ -6,15 +6,34 @@ metadata:
     name: prometheus-server-conf
   namespace: monitoring
 data:
+  prometheus.rules: |-
+    groups:
+    - name: devopscube demo alert
+      rules:
+      - alert: High Pod Memory
+        expr: sum(container_memory_usage_bytes) > 1
+        for: 1m
+        labels:
+          severity: slack
+        annotations:
+          summary: High Memory Usage
   prometheus.yml: |-
     global:
       scrape_interval: 5s
       evaluation_interval: 5s
-
+    rule_files:
+      - /etc/prometheus/prometheus.rules
+    alerting:
+      alertmanagers:
+      - scheme: http
+        static_configs:
+        - targets:
+          - "alertmanager.monitoring.svc:9093"
+          
     scrape_configs:
       - job_name: 'node-exporter'
         static_configs:
-        - targets: ['172.16.204.71:9100', '172.16.204.72:9100', '172.16.204.74:9100']
+        - targets: ['172.16.204.71:9100', '172.16.204.72:9100', '172.16.204.74:9100','52.117.54.217:9100']
 
       - job_name: 'kubernetes-apiservers'
 
