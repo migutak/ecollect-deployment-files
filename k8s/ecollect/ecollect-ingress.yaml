@@ -3,7 +3,10 @@ kind: Ingress
 metadata:
   name: ecollect-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/kibana/(.*)$ /$1 break;
+      proxy_set_header Authorization "";
+    ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: ecollect.inteligen.co.ke
@@ -25,3 +28,7 @@ spec:
         backend:
           serviceName: oracledbnode-service
           servicePort: 80
+      - path: /kibana
+        backend:
+          serviceName: kibana
+          servicePort: 5601

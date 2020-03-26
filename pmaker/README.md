@@ -237,8 +237,9 @@ vi loginStyle.css
 
 @#
 
-public (eth1) ==>Ngina Car track
+
 52.117.54.217 root/RwUNvns4
+159.122.130.146 root/YAGd5RFB
 
 docker run -it -d --name ecollect -v /app/configs/nginx.conf:/etc/nginx/nginx.conf:ro -v /app/nginxlogs:/var/log/nginx:rw -v /app/ecollect:/usr/share/nginx/html:ro -p 80:80
 ThisB!gHous#$123

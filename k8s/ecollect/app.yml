@@ -41,7 +41,7 @@ spec:
   - host: ecollect.inteligen.co.ke
     http:
       paths:
-      - path: /testapp
+      - path: /api
         backend:
           serviceName: testapp-service
           servicePort: 3000
